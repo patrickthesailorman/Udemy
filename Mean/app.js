@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 
 app.set('port', 3000);
 
@@ -15,6 +16,13 @@ app.get('/json', function(req, res) {
     res
     .status(200)
     .json( {"jsonData" : true } );
+});
+
+app.get('/file', function(req, res) {
+    console.log("GET the file");
+    res
+    .status(200)
+    .sendFile(path.join(_dirname, 'app.js'));
 });
 
 var server = app.listen(app.get('port'), function() {
