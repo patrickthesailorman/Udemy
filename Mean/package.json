@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/patrickthesailorman/Udemy/issues"
   },
-  "homepage": "https://github.com/patrickthesailorman/Udemy#readme"
+  "homepage": "https://github.com/patrickthesailorman/Udemy#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.0"
+  }
 }
