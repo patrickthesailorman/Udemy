@@ -4,6 +4,8 @@ var path = require('path');
 
 app.set('port', process.env.PORT);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', function(req, res) {
     console.log("GET the homepage");
     res
@@ -22,7 +24,7 @@ app.get('/file', function(req, res) {
     console.log("GET the file");
     res
       .status(200)
-      .sendFile(path.join(_dirname, 'app.js'));
+      .sendFile(path.join(__dirname, 'app.js'));
 });
 
 var server = app.listen(app.get('port'), function() {
