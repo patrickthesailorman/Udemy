@@ -1,3 +1,5 @@
+// Blocking demo
+
 console.log(1);
 
 require('./_fibonacci.js');
