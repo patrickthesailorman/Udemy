@@ -1,3 +1,5 @@
+// Set up Answer
+
 var answer = "Now that's a good question!";
 
 module.exports.ask = function(question) {
