@@ -1,3 +1,5 @@
+// Blocking
+
 var fs = require('fs');
 
 console.log("Going to get a file");
