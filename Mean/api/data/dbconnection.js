@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var dburl = 'mongodb://' + process.env.ip + ' :27017'
+var dburl = 'mongodb://' + process.env.IP + ':27017/Mean'
 
 var _connection = null;
 
