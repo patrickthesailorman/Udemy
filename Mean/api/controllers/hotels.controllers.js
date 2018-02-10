@@ -35,11 +35,11 @@ module.exports.hotelsGetOne = function(req, res) {
     var collection = db.collection('hotels');
     
     var hotelId = req.params.hotelId;
-    console.log("GET the hotelId", hotelId);
+    console.log("GET hotelId", hotelId);
     
     collection
       .findOne({
-          _id : ObjectId(hotelId)
+          _id: ObjectId(hotelId)
       }, function(err, doc) { 
         res
           .status(200)
