@@ -8,7 +8,7 @@ router
     .get(ctrlHotels.hotelsGetAll);
     
 router
-    .route('/hotels/:hotelID')
+    .route('/hotels/:hotelId')
     .get(ctrlHotels.hotelsGetOne);
     
 router
