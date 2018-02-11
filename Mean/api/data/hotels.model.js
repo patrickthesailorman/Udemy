@@ -52,6 +52,7 @@ var hotelSchema = new mongoose.Schema({
         cooridinates : {
             type : [Number],
             index : '2dsphere'
+        }
     }
 });
 
