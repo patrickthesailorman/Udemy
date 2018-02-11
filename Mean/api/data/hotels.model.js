@@ -21,6 +21,14 @@ var reviewSchema = new mongoose.Schema({
     }
 });
 
+var roomSchema = new mongoose.Schema({
+   type : String,
+   number : Number,
+   description : String,
+   photos : [String],
+   price : Number
+});
+
 var hotelSchema = new mongoose.Schema({
     name : {
         type : String,
@@ -36,7 +44,8 @@ var hotelSchema = new mongoose.Schema({
     description : String,
     photos : [String],
     currency : String,
-    reviews : [reviewSchema]
+    reviews : [reviewSchema],
+    rooms : [roomSchema]
 });
 
 mongoose.model('Hotel', hotelSchema);
