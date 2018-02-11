@@ -19,5 +19,18 @@ module.exports.reviewsGetAll = function(req, res) {
 };
 //Get a single review for a hotel
 module.exports.reviewsGetOne = function(req, res) {
+    var hotelId = req.params.hotelId;
+    var reviewId = req.params.reviewId;
+    console.log("GET reviewId" + reviewId + "for hotelId " + hotelId);
     
+     Hotel
+      .findById(hotelId)
+      .select('reviews')
+      .exec(function(err, hotel) { 
+          console.log("Returned hotel", hotel);
+          var review = hotel.reviews.reviewId(reviewId);
+        res
+          .status(200)
+          .json( reviews );
+    });
 };
