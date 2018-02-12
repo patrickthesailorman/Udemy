@@ -31,6 +31,7 @@ module.exports.hotelsGetAll = function(req, res) {
     
     var offset = 0;
     var count = 5;
+    var maxCount = 10;
     
     if (req.query && req.query.lat && req.query.lng) {
       runGeoQuery(req, res);
@@ -50,6 +51,15 @@ module.exports.hotelsGetAll = function(req, res) {
         .status(400)
         .json({
             "message" : "if supplied in querystring count and offset should be numbers"
+        });
+        return;
+    }
+    
+    if (count > maxCount) {
+        res
+        .status(400)
+        .json({
+            "message" : "Count limit of " + maxCount + "exceeded."
         });
         return;
     }
