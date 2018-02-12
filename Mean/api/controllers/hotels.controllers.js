@@ -37,12 +37,16 @@ module.exports.hotelsGetAll = function(req, res) {
       return;
     }
     
-    if(req.query && req.query.offset) {
+    if (req.query && req.query.offset) {
         offset = parseInt(req.query.offset, 10);
     }
     
-     if(req.query && req.query.count) {
+     if (req.query && req.query.count) {
         count = parseInt(req.query.count, 10);
+    }
+    
+    if (isNaN(offset) || isNaN(count)) {
+        return;
     }
     
     Hotel
