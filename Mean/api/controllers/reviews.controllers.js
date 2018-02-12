@@ -29,8 +29,8 @@ module.exports.reviewsGetOne = function(req, res) {
       .exec(function(err, hotel) { 
           console.log("Returned hotel", hotel);
           var review = hotel.reviews.reviewId(reviewId);
-        res
-          .status(200)
-          .json( reviews );
+            res
+              .status(200)
+              .json( review );
     });
 };
