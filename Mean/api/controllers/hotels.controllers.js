@@ -46,6 +46,11 @@ module.exports.hotelsGetAll = function(req, res) {
     }
     
     if (isNaN(offset) || isNaN(count)) {
+        res
+        .status(400)
+        .json({
+            "message" : "if supplied in querystring count and offset should be numbers"
+        });
         return;
     }
     
@@ -54,9 +59,16 @@ module.exports.hotelsGetAll = function(req, res) {
     .skip(offset)
     .limit(count)
     .exec(function(err, hotels) {
-      console.log("Found hotels", hotels.length);
-      res
-      .json(hotels);
+        if (err) {
+          console.log("Error finding Hotels");
+          res  
+            .status(500)
+            .json(err);
+        } else {
+          console.log("Found hotels", hotels.length);
+          res
+           .json(hotels);
+        }
     });
     
   // collection
