@@ -56,11 +56,11 @@ var _addReview = function(req,res, hotel) {
 };
 
 module.exports.reviewsAddOne = function(req, res) {
-    var id = req.params.hotelId;
-    console.log("GET hotelId", id);
+    var hotelId = req.params.hotelId;
+    console.log("GET hotelId", hotelId);
     
    Hotel
-      .findById(id)
+      .findById(hotelId)
       .select('reviews')
       .exec(function(err, doc) { 
                     var response = {
@@ -72,10 +72,10 @@ module.exports.reviewsAddOne = function(req, res) {
           response.status = 500,
           response.message = err;
         } else if(!doc) {
-            console.log("Hotel id not found in database", id);
+            console.log("Hotel id not found in database", hotelId);
           response.status = 404,
           response.message = {
-            "message" : "Hotel ID not found" + id
+            "message" : "Hotel ID not found" + hotelId
         };
         } else {
             response.message = doc.reviews ? doc.reviews : [];
