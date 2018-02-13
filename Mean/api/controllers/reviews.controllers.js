@@ -35,6 +35,26 @@ module.exports.reviewsGetOne = function(req, res) {
     });
 };
 
+var _addReview = function(req,res, hotel) {
+   hotel.reviews.push({
+       name : req.body.name,
+       rating : parseInt(req.body.rating, 10),
+       review : req.body.review
+   });
+   
+   hotel.save(function(err, hotelUpdated) {
+       if (err) {
+           res
+           .status(500)
+           .json(err);
+       } else {
+           res
+           .status(201)
+           .json(hotelUpdated.reviews[hotelUpdated.reviews.length -1]);
+       }
+   });
+};
+
 module.exports.reviewsAddOne = function(req, res) {
     var id = req.params.hotelId;
     console.log("GET hotelId", id);
