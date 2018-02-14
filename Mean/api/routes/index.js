@@ -11,7 +11,8 @@ router
     
 router
     .route('/hotels/:hotelId')
-    .get(ctrlHotels.hotelsGetOne);
+    .get(ctrlHotels.hotelsGetOne)
+    .put(ctrlHotels.hotelsUpdateOne);
     
     // Review Routes
 router
