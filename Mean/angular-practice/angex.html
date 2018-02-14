@@ -8,7 +8,8 @@
     <title>Angular</title>
 </head>
 <body>
-    <p> {{ 'Hello, ' + user }}</p>
- <input type="text" name="" id="" ng-model="user">
+<div ng-init="name = 'Patrick'">
+    <p ng-bind="name"></p>
+</div>
 </body>
 </html>
