@@ -130,8 +130,19 @@ module.exports.reviewsDeleteOne = function(req, res) {
             .status(response.status)
             .json(response.message);
         } else {
-            
+           hotel.reviews.id(reviewId).remove()
+           hotel.save(function(err, hotelUpdated) {
+               if (err) {
+                   res
+                   .status(500)
+                   .json(err);
+               } else {
+                   res
+                   .status(204)
+                   .json();
+               }
+           });
         }
-        }
-    })
+    });
+    
 };
