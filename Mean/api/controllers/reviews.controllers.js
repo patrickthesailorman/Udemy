@@ -104,5 +104,34 @@ module.exports.reviewsDeleteOne = function(req, res) {
             status : 200,
             message : {}
         };
+        if (err) {
+           console.log("Error finding Hotel"); 
+           response.status = 500,
+           response.message = err;
+        } else if(!hotel) {
+            console.log("Hotel id not found in database", id);
+          response.status = 404,
+          response.message = {
+            "message" : "Hotel ID not found" + hotelId
+        };
+        } else {
+            // Get the review
+            thisReview = hotel.reviews.id(reviewId);
+            // If the review doesn't exist Mongoose returns null
+            if (!thisReview) {
+                response.status = 404;
+                response.message = {
+                    "message" : "Review Id not found " + reviewId
+                };
+            }
+        }
+        if (response.status !== 200) {
+            res
+            .status(response.status)
+            .json(response.message);
+        } else {
+            
+        }
+        }
     })
 };
