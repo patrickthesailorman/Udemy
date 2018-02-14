@@ -91,5 +91,18 @@ module.exports.reviewsUpdateOne = function(req, res) {
 };
 
 module.exports.reviewsDeleteOne = function(req, res) {
+    var hotelId = req.params.hotelId;
+    var reviewId = req.params.reviewId;
+    console.log('PUT reviewId ' + reviewId + 'for hotelId ' + hotelId);
     
+    Hotel
+    .findById(hotelId)
+    .select('reviews')
+    .exec(function(err, hotel) {
+        var thisReview;
+        var response = {
+            status : 200,
+            message : {}
+        };
+    })
 };
