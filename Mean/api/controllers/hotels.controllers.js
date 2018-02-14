@@ -218,3 +218,7 @@ module.exports.hotelsUpdateOne = function(req, res) {
       }
     });
 };
+
+module.exports.hotelsDeleteOne = function(req, res) {
+    
+};
