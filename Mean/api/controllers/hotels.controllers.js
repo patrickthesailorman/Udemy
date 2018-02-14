@@ -104,11 +104,11 @@ module.exports.hotelsGetAll = function(req, res) {
 
 module.exports.hotelsGetOne = function(req, res) {
     var id = req.params.hotelId;
+    
     console.log("GET hotelId", id);
     
   Hotel
     .findById(id)
-    .select("-reviews -rooms")
     .exec(function(err, doc) {
       var response = {
         status : 200,
@@ -125,6 +125,9 @@ module.exports.hotelsGetOne = function(req, res) {
           "message" : "Hotel ID not found " + id
         };
       }
+      res
+        .status(response.status)
+        .json(response.message);
     });
 
 };
