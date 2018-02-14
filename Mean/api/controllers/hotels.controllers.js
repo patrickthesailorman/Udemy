@@ -2,9 +2,18 @@ var mongoose = require('mongoose');
 var Hotel = mongoose.model('Hotel');
 
 var runGeoQuery = function(req, res) {
+    
     var lng =  parseFloat(req.query.lng);
     var lat = parseFloat(req.query.lat);
     
+    if (isNaN(lng) || isNaN(lat)) {
+        res
+          .status(400)
+          .json({
+            "message" : "If supplied in querystring, lng and lat must both be numbers"
+          });
+        return;
+      }
     // A geoJSON point
     var point = {
         type : "Point",
