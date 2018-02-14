@@ -89,44 +89,48 @@ var _addReview = function(req,res, hotel) {
        } else {
            res
            .status(201)
-           .json(hotelUpdated.reviews[hotelUpdated.reviews.length -1]);
+           .json(hotelUpdated.reviews[hotelUpdated.reviews.length - 1]);
        }
    });
 };
 
 module.exports.reviewsAddOne = function(req, res) {
-    var hotelId = req.params.hotelId;
-    console.log("GET hotelId", hotelId);
+    var id = req.params.hotelId;
+    
+    console.log("POST review to hotelId", id);
     
    Hotel
-      .findById(hotelId)
+      .findById(id)
       .select('reviews')
       .exec(function(err, doc) { 
-                    var response = {
-              status : 200,
-              message : doc
-          };
-       if (err) {
+        var response = {
+          status : 200,
+          message : doc
+        };
+        if (err) {
           console.log("Error finding Hotel");
-          response.status = 500,
+          response.status = 500;
           response.message = err;
         } else if(!doc) {
-            console.log("Hotel id not found in database", hotelId);
-          response.status = 404,
+          console.log("Hotel id not found in database", id);
+          response.status = 404;
           response.message = {
-            "message" : "Hotel ID not found" + hotelId
-        };
-        } else {
-            response.message = doc.reviews ? doc.reviews : [];
+            "message" : "Hotel ID not found" + id
+          };
         }
+        if (doc) {
+            _addReview(req, res, doc);
+        } else {
         res
           .status(response.status)
           .json(response.message);
-    });
+        }
+      });
+      
 };
 
 module.exports.reviewsUpdateOne = function(req, res) {
-    var hotelId = req.params.hotelId;
+  var hotelId = req.params.hotelId;
   var reviewId = req.params.reviewId;
   console.log('PUT reviewId ' + reviewId + ' for hotelId ' + hotelId);
 
@@ -188,7 +192,7 @@ module.exports.reviewsDeleteOne = function(req, res) {
     var hotelId = req.params.hotelId;
     var reviewId = req.params.reviewId;
     console.log('PUT reviewId ' + reviewId + 'for hotelId ' + hotelId);
-    
+
     Hotel
     .findById(hotelId)
     .select('reviews')
