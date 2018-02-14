@@ -8,8 +8,10 @@
     <title>Angular</title>
 </head>
 <body>
-<div ng-init="name = 'Patrick'">
-    <p ng-bind="name"></p>
+<div ng-init="number = 0">
+    <button ng-click="number = number + 1">+1</button>
+    <button ng-click="number = number - 1">-1</button>
+    <p> {{ number }} </p>
 </div>
 </body>
 </html>
