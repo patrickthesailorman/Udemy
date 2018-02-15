@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html ng-app>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Angular</title>
     <style>
-        .red {
-            color: red;
-        }
-        .green {
-            color: green;
-        }
+       .ng-cloak, [ng-cloak], [ng\:cloak] {
+           display: none !important;
+       }
+       
     </style>
 </head>
-<body>
+<body ng-cloak>
 <div ng-init="numbers = [0,1,2,3,4,5,6,7]">
   <ul>
-      <li ng-repeat="number in numbers" ng-class="{red: $even, green: $odd}">{{number}}</li>
+      <li ng-repeat="number in numbers">{{number}}</li>
   </ul>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
 </body>
 </html>
