@@ -28,5 +28,25 @@ module.exports.register = function(req, res) {
 };
 
 module.exports.login = function(req, res) {
+    console.log('logging in user');
+    
+    var username = req.body.username;
+    var password = req.body.password;
+    
+    User.findOne({
+        username: username
+    }).exec(function(err, user) {
+        if (err) {
+            console.log(err);
+            res
+            .status(400)
+            .json(err);
+        } else {
+            console.log('found user', user);
+            res
+            .status(200)
+            .json(user);
+        }
+    });
     
 };
