@@ -20,7 +20,22 @@ function config($routeProvider) {
       controller: RegisterController,
       controllerAs: 'vm'
     })
+    .when('/profile', {
+      templateUrl: 'angular-app/profile/profile.html',
+      access: {
+        restricted: true
+      }
+    })
     .otherwise({
       redirectTo: '/'
     });
+}
+
+function run($rootScope, $location, $window, AuthFactory) {
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
+    if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !AuthFactory.isLoggedIn) {
+      event.preventDefault();
+      $location.path('/');
+    }
+  });
 }
