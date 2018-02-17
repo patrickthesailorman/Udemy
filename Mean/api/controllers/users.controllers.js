@@ -61,7 +61,7 @@ module.exports.login = function(req, res) {
     
 };
 
-module.export.authenticate = function(req, res, next) {
+module.exports.authenticate = function(req, res, next) {
     var headerExists = req.headers.authorization;
     if (headerExists) {
         var token = req.headers.authorization.split(' ')[1]; //--> Authorization Bearer

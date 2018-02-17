@@ -10,10 +10,10 @@ function RegisterController() {
         };
         
         if(!vm.username || !vm.password) {
-            vm.error = 'Please enter a username and a password.'
+            vm.error = 'Please enter a username and a password.';
         } else {
             if (vm.passord !== vm.passwordRepeat) {
-                vm.error = 'Pleas be sure the passwords match.'
+                vm.error = 'Please be sure the passwords match.';
             } else {
                 $https.post('/api/users/register', user).then(function(result) {
                     console.log(result);
