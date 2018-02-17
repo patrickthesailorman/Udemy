@@ -43,7 +43,7 @@ module.exports.login = function(req, res) {
             .status(400)
             .json(err);
         } else {
-            if (bcrypt.comparesync(password, user.password)) {
+            if (bcrypt.compareSync(password, user.password)) {
             console.log('found user', user);
             res
             .status(200)
