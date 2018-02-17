@@ -1,6 +1,8 @@
-angular.module('meanhotel', ['ngRoute']).config(config);
+angular.module('meanhotel', ['ngRoute', 'angular-jwt']).config(config).run(run);
 
-function config($routeProvider) {
+function config($httpProvider, $routeProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
+  
   $routeProvider
     .when('/', {
       templateUrl: 'angular-app/main/main.html'
