@@ -43,10 +43,17 @@ module.exports.login = function(req, res) {
             .status(400)
             .json(err);
         } else {
+            if (bcrypt.comparesync(password, user.password)) {
             console.log('found user', user);
             res
             .status(200)
             .json(user);
+            } else {
+                res
+                .status(401)
+                .json('Unauthorized');
+            }
+
         }
     });
     
