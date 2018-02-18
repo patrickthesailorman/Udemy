@@ -1,4 +1,3 @@
-
 angular.module('meanhotel').directive('mhNavigation', mhNavigation);
 
 function mhNavigation() {

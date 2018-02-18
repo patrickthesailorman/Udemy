@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-var dburl = 'mongodb://' + process.env.IP + ':27017/Mean'
+var mongoose = require('mongoose'); 
+var dburl = 'mongodb://' + process.env.IP + ':27017/Mean';
 
 mongoose.connect(dburl);
 
@@ -37,5 +37,5 @@ process.once('SIGUSR2', function() {
 });
 
 // BRING IN THE SCHEMAS AND MODELS
-require('./hotels.model.js');
+require('./hotels.model');
 require('./users.model');
