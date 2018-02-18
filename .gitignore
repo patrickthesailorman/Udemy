@@ -58,3 +58,5 @@ typings/
 .env
 
 /Mean/data
+
+/Mean/data/local.0
