@@ -12,7 +12,7 @@ function RegisterController($http) {
         if(!vm.username || !vm.password) {
             vm.error = 'Please enter a username and a password.';
         } else {
-            if (vm.passord !== vm.passwordRepeat) {
+            if (vm.password !== vm.passwordRepeat) {
                 vm.error = 'Please be sure the passwords match.';
             } else {
                 $http.post('/api/users/register', user).then(function(result) {
