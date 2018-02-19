@@ -12,7 +12,7 @@ function hotelDataFactory($http) {
   }
 
   function hotelDisplay(id) {
-    return $http.get('/api/hotels/' + id).then(complete).catch(failed);
+    return $http.get('/api/hotel/' + id).then(complete).catch(failed);
   }
 
   function postReview(id, review) {

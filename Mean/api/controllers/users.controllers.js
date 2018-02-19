@@ -49,7 +49,7 @@ module.exports.login = function(req, res) {
             var token = jwt.sign({ username: user.username}, 's3cr3t', { expiresIn: 3600 } );
             res
             .status(200)
-            .json({ sucess: true, token: token });
+            .json({ success: true, token: token });
             } else {
                 res
                 .status(401)
