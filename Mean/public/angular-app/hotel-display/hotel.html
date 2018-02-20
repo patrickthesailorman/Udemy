@@ -9,7 +9,7 @@
 </ul>
 <h3>Reviews</h3>
 <ul>
-  <li ng-repeat="review in vm.hotel.reviews"> <strong>{{ review.name }} says:</strong> {{ review.review }}</li>
+  <li ng-repeat="review in vm.hotel.reviews"> <strong>{{ review.name }} says:</strong> "{{ review.review }}"</li>
 </ul>
 <div ng-if="vm.isLoggedIn()">
 <form name="vm.reviewForm" ng-submit="vm.addReview()">
